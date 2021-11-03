@@ -89,6 +89,14 @@ explore: ga_sessions {
     sql: LEFT JOIN UNNEST(${ga_sessions.custom_variables}) AS custom_variables ;;
   }
 
+  ############ADDITIONS TO BASE EXPLORE#####################
+  join: user_sales_data {
+    sql_on: ${user_sales_data.full_visitor_id} = ${ga_sessions.full_visitor_id} ;;
+  }
+  join: sales__by__category {
+    sql: LEFT JOIN UNNEST(${user_sales_data.sales_by_category}) as sales__by__category;;
+  }
+
   ## Aggregate Tables for LookML Dashboards
   ## GA360 Overview Dashboard
 
