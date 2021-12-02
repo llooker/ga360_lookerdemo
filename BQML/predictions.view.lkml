@@ -528,7 +528,7 @@ view: future_purchase_prediction {
   dimension: clientId {
     type: string
     hidden: yes
-    sql: TRIM(REPLACE(${TABLE}.clientId,',','')) ;;
+    sql: REVERSE(${full_visitor_id}) ;;
   }
 
   measure: average_user_propensity_score {
