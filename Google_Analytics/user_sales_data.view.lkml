@@ -93,6 +93,14 @@ view: user_sales_data {
     sql: ${TABLE}.user_key ;;
   }
 
+measure: average_ltv {
+  label: "Avg Customer LTV"
+  type: average
+  sql: ${customer_ltv} ;;
+  value_format_name: usd
+}
+
+
   set: detail {
     fields: [
       full_visitor_id,
