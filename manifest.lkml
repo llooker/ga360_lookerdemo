@@ -26,7 +26,7 @@ constant: PDT_DATE_FILTER {
 }
 
 constant: EXPLORE_DATE_FILTER {
-  value: "last 5 years"
+  value: "last 10 years"
   export: override_optional
 }
 
