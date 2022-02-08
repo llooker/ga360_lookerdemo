@@ -21,7 +21,7 @@ constant: GA360_TABLE_NAME {
 }
 
 constant: PDT_DATE_FILTER {
-  value: "last 5 years"
+  value: "last 10 years"
   export: override_optional
 }
 
