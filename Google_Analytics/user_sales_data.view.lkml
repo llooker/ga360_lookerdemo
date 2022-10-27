@@ -81,6 +81,7 @@ view: user_sales_data {
     type: tier
     tiers: [0,100,200,300,500]
     style: integer
+    sql: ${customer_ltv} ;;
   }
 
   dimension: total_items_purchased {
