@@ -77,6 +77,12 @@ view: user_sales_data {
     sql: ${TABLE}.customer_LTV ;;
   }
 
+  dimension: customer_ltv_tier {
+    type: tier
+    tiers: [0,100,200,300,500]
+    style: integer
+  }
+
   dimension: total_items_purchased {
     type: number
     sql: ${TABLE}.total_items_purchased ;;
