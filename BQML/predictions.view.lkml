@@ -16,7 +16,7 @@ view: training_input {
     sql:
 WITH filtered_base AS (
         SELECT * FROM ${ga_sessions.SQL_TABLE_NAME}
-        WHERE TIMESTAMP(PARSE_DATE('%Y%m%d', REGEXP_EXTRACT(_TABLE_SUFFIX,r'\d\d\d\d\d\d\d\d')))  BETWEEN ((TIMESTAMP_ADD(TIMESTAMP_TRUNC( CURRENT_TIMESTAMP(), DAY), INTERVAL -2000 DAY))) AND ((TIMESTAMP_ADD(TIMESTAMP_ADD(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), DAY), INTERVAL -2000 DAY), INTERVAL 200 DAY)))),
+        WHERE PARSE_DATE('%Y%m%d', REGEXP_EXTRACT(_TABLE_SUFFIX,r'\d\d\d\d\d\d\d\d'))  BETWEEN DATE(2016,08,01)  AND DATE(2017,08,01)),
       -- labeling customers who have made a purchase as a 1 and customers who have not made a purchas as a 0
     user_label AS (
       SELECT fullvisitorId, max(case when totals.transactions >= 1 then 1 else 0 end) as label, max(case when totals.transactions >= 1 then visitStartTime end) as event_session
@@ -80,7 +80,7 @@ view: testing_input {
     sql_trigger_value: SELECT CURRENT_DATE() ;;
     sql: WITH filtered_base AS (
         SELECT * FROM ${ga_sessions.SQL_TABLE_NAME}
-        WHERE TIMESTAMP(PARSE_DATE('%Y%m%d', REGEXP_EXTRACT(_TABLE_SUFFIX,r'\d\d\d\d\d\d\d\d')))  BETWEEN ((TIMESTAMP_ADD(TIMESTAMP_TRUNC( CURRENT_TIMESTAMP(), DAY), INTERVAL -1500 DAY))) AND ((TIMESTAMP_ADD(TIMESTAMP_ADD(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), DAY), INTERVAL -1500 DAY), INTERVAL 200 DAY)))),
+        WHERE PARSE_DATE('%Y%m%d', REGEXP_EXTRACT(_TABLE_SUFFIX,r'\d\d\d\d\d\d\d\d'))  BETWEEN DATE(2016,08,01)  AND DATE(2017,08,01)),
       -- labeling customers who have made a purchase as a 1 and customers who have not made a purchas as a 0
     user_label AS (
       SELECT fullvisitorId, max(case when totals.transactions >= 1 then 1 else 0 end) as label, max(case when totals.transactions >= 1 then visitStartTime end) as event_session
@@ -259,7 +259,7 @@ view: future_input {
     sql_trigger_value: SELECT CURRENT_DATE() ;;
     sql: WITH filtered_base AS (
         SELECT * FROM ${ga_sessions.SQL_TABLE_NAME}
-        WHERE TIMESTAMP(PARSE_DATE('%Y%m%d', REGEXP_EXTRACT(_TABLE_SUFFIX,r'\d\d\d\d\d\d\d\d')))  BETWEEN ((TIMESTAMP_ADD(TIMESTAMP_TRUNC( CURRENT_TIMESTAMP(), DAY), INTERVAL -2000 DAY))) AND ((TIMESTAMP_ADD(TIMESTAMP_ADD(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), DAY), INTERVAL -2000 DAY), INTERVAL 200 DAY)))),
+        WHERE PARSE_DATE('%Y%m%d', REGEXP_EXTRACT(_TABLE_SUFFIX,r'\d\d\d\d\d\d\d\d'))  BETWEEN DATE(2016,08,01)  AND DATE(2017,08,01)),
       -- labeling customers who have made a purchase as a 1 and customers who have not made a purchas as a 0
     user_label AS (
       SELECT fullvisitorId, max(case when totals.transactions >= 1 then 1 else 0 end) as label, max(case when totals.transactions >= 1 then visitStartTime end) as event_session
